@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список заметок</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Вставьте ваш CSS здесь */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .notes-list {
+            list-style-type: none;
+        }
+
+        .note-item {
+            margin-bottom: 10px;
+        }
+
+        .note-title {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .note-title:hover {
+            color: #0056b3;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Список заметок</h1>
+
+    <ul class="notes-list">
+        <li th:each="note : ${notes}" class="note-item">
+            <a th:href="@{/notes/{id}(id=${note.id})}" class="note-title" th:text="${note.title}">Заголовок заметки</a>
+        </li>
+    </ul>
+    <a href="/notes/new" class="btn">Создать новую заметку</a>
+</div>
+</body>
+</html>
